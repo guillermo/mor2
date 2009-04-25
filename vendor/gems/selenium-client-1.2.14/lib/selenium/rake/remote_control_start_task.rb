@@ -25,6 +25,7 @@ module Selenium
       def define
         desc "Launch Selenium Remote Control"
         task @name do
+          begin
           puts "Starting Selenium Remote Control at 0.0.0.0:#{@port}..."
           remote_control = Selenium::RemoteControl::RemoteControl.new("0.0.0.0", @port, @timeout_in_seconds)
           remote_control.jar_file = @jar_file
@@ -35,6 +36,9 @@ module Selenium
             TCPSocket.wait_for_service :host => @host, :port => @port
           end
           puts "Selenium Remote Control at 0.0.0.0:#{@port} ready"
+        rescue #XXX
+            puts "XXX exception starting selenium"
+          end
         end
       end
 

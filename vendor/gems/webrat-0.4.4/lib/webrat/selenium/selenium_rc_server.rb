@@ -30,7 +30,7 @@ module Webrat
       def remote_control
         return @remote_control if @remote_control
         
-        @remote_control = ::Selenium::RemoteControl::RemoteControl.new("0.0.0.0", Webrat.configuration.selenium_server_port, 5)
+        @remote_control = ::Selenium::RemoteControl::RemoteControl.new("127.0.0.1", Webrat.configuration.selenium_server_port, 5)
         @remote_control.jar_file = jar_path
         
         return @remote_control
@@ -55,7 +55,7 @@ module Webrat
       def wait_for_socket
         silence_stream(STDOUT) do
           TCPSocket.wait_for_service_with_timeout \
-            :host     => (Webrat.configuration.selenium_server_address || "0.0.0.0"),
+            :host     => (Webrat.configuration.selenium_server_address || "127.0.0.1"),
             :port     => Webrat.configuration.selenium_server_port,
             :timeout  => 15 # seconds
         end
@@ -70,7 +70,7 @@ module Webrat
       
       def stop
         silence_stream(STDOUT) do
-          ::Selenium::RemoteControl::RemoteControl.new("0.0.0.0", Webrat.configuration.selenium_server_port, 5).stop
+          ::Selenium::RemoteControl::RemoteControl.new("127.0.0.1", Webrat.configuration.selenium_server_port, 5).stop #XXX
         end
       end
       

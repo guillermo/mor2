@@ -5,8 +5,6 @@ Feature: Event creation
   I want to create the event in the application
   
   Scenario: Event details
-  
-    Given pending # Remove me
     
     Given I am on the homepage
     
