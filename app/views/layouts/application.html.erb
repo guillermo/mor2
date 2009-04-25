@@ -16,7 +16,7 @@
   	<link rel="stylesheet" href="/stylesheets/application.css" type="text/css" media="screen" />
   </head>
   <body>
-    <div class="container">
+    <div class="container <%= params["grid"] ? 'showgrid' : '' %>">
       <div class="span-18 prepend-3 apend-3 last">
         <h1>event.it</h1>
         <%= yield %>
