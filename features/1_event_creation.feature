@@ -24,9 +24,6 @@ Feature: Event creation
     And I should be on the send form for the "Monsters of Ruby III" event
     
   Scenario: Wrong event data
-  
-    Given pending # Remove me
-    
     Given I am on the homepage   
     When I press "Next"
     Then I should be on the homepage
