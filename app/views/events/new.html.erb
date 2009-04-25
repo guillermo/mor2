@@ -1,2 +1,16 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>New Event</h1>
+
+ <% form_for @event do |e| %>
+    <%= e.label :email, 'Your Email' %>:
+    <%= e.text_field :email %><br />
+    <%= e.label :name, 'Event Name' %>:
+    <%= e.text_field :name %><br />
+    <%= e.label :street, 'Event Location' %>:
+    <%= e.text_field :street %><br />
+    <span id='master_row'>
+        <%= e.label :dates, 'Event Date' %>:
+        <%= text_field_tag 'event[dates][]' %><br />
+    </span>
+    <%=link_to_function 'add another', "clone_master_row()" %>
+  <% end %>
+
